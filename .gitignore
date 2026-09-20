@@ -17,3 +17,6 @@ csrc/
 
 # Generated local reports
 out/
+
+# Local brainstorming and UI mockup sessions
+.superpowers/
