@@ -251,8 +251,8 @@ Example internal record:
   "port_type": "input",
   "width": 384,
   "range": "[383:0]",
-  "sig_name": "ctl0_slice_p_hdr",
-  "full_name": "tb_top.u_dut.ctl0_slice_p_hdr",
+  "sig_name": "stream_payload",
+  "full_name": "tb_top.u_dut.stream_payload",
   "comment": ""
 }
 ```
@@ -445,7 +445,7 @@ Examples include:
 
 ```systemverilog
 parameter WIDTH = BASE_WIDTH * 2;
-parameter MODE  = "PCIE";
+parameter MODE  = "MODE_A";
 parameter TYPE  = MY_ENUM;
 parameter MASK  = `SOME_MACRO;
 ```
@@ -521,17 +521,17 @@ When an RTL source file is provided, the existing parser should supply comments.
 Example:
 
 ```verilog
-//------------------- station <-> slice
-//PORT0
-//pkt
-input ctl0_slice_p_sop;
-input ctl0_slice_p_valid;
+//------------------- producer <-> consumer
+//CHANNEL_A
+//stream
+input stream_start;
+input stream_valid;
 ```
 
 The consecutive comment block should be merged into one group:
 
 ```text
-------------------- station <-> slice | PORT0 | pkt
+------------------- producer <-> consumer | CHANNEL_A | stream
 ```
 
 ### Inline comments
@@ -539,7 +539,7 @@ The consecutive comment block should be merged into one group:
 Example:
 
 ```verilog
-input ctl0_slice_p_ecrc_err; // ECRC error indication
+input stream_error; // ECRC error indication
 ```
 
 Result:
@@ -627,7 +627,7 @@ Recommended top-level schema:
 
   "groups": [
     {
-      "comment": "station <-> slice | PORT0 | pkt",
+      "comment": "producer <-> consumer | CHANNEL_A | stream",
       "ports": []
     }
   ],
@@ -904,9 +904,9 @@ clock-domain consistency
 Example:
 
 ```text
-station <-> slice
-PORT0
-pkt
+producer <-> consumer
+CHANNEL_A
+stream
 ```
 
 may be transformed into a structured interface group after the base data is reliable.

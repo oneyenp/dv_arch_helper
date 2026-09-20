@@ -25,13 +25,13 @@ dv_arch_helper/
 Example source:
 
 ```verilog
-//------------------- station <-> slice
-//PORT0
-//pkt
-input            ctl0_slice_p_sop;
-input            ctl0_slice_p_valid; // packet valid
-input      [5:0] ctl0_slice_p_dlbo;
-input    [383:0] ctl0_slice_p_hdr;
+//------------------- producer <-> consumer
+//CHANNEL_A
+//stream
+input            stream_start;
+input            stream_valid; // packet valid
+input      [5:0] stream_meta;
+input    [383:0] stream_payload;
 ```
 
 The parser preserves the standalone comment block as a signal-group comment and keeps an inline `//` comment on the corresponding signal.
@@ -62,11 +62,11 @@ Example:
 
 ```csv
 port_type,width,range,sig_name,comment
-,,,,------------------- station <-> slice | PORT0 | pkt
-input,1,,ctl0_slice_p_sop,
-input,1,,ctl0_slice_p_valid,packet valid
-input,6,[5:0],ctl0_slice_p_dlbo,
-input,384,[383:0],ctl0_slice_p_hdr,
+,,,,------------------- producer <-> consumer | CHANNEL_A | stream
+input,1,,stream_start,
+input,1,,stream_valid,packet valid
+input,6,[5:0],stream_meta,
+input,384,[383:0],stream_payload,
 ```
 
 CSV output intentionally contains no blank rows.

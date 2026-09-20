@@ -3,10 +3,10 @@
 
 Enhancements over the original parse_rtl_structure.py:
 - Supports classic/non-ANSI port declarations in the module body, e.g.:
-      // station <-> slice
-      // PORT0
-      // pkt
-      input  [5:0] ctl0_slice_p_dlbo; // inline note
+      // producer <-> consumer
+      // CHANNEL_A
+      // stream
+      input  [5:0] stream_meta; // inline note
 - Consecutive standalone // comments are merged into one port-group comment.
 - A new standalone // comment block starts a new signal group.
 - Inline // comments after a port declaration are stored on that signal row.
