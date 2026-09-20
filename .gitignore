@@ -1,0 +1,19 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# EDA / waveform artifacts
+simv
+a.out
+simv.daidir/
+csrc/
+*.fsdb
+*.vpd
+*.vcd
+*.log
+*.key
+
+# Generated local reports
+out/
