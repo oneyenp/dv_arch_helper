@@ -539,13 +539,13 @@ The consecutive comment block should be merged into one group:
 Example:
 
 ```verilog
-input stream_error; // ECRC error indication
+input stream_error; // error indication
 ```
 
 Result:
 
 ```text
-comment = "ECRC error indication"
+comment = "error indication"
 ```
 
 ### Merge rule

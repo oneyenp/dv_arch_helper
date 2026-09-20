@@ -29,7 +29,7 @@ Example source:
 //CHANNEL_A
 //stream
 input            stream_start;
-input            stream_valid; // packet valid
+input            stream_valid; // valid indicator
 input      [5:0] stream_meta;
 input    [383:0] stream_payload;
 ```
@@ -64,7 +64,7 @@ Example:
 port_type,width,range,sig_name,comment
 ,,,,------------------- producer <-> consumer | CHANNEL_A | stream
 input,1,,stream_start,
-input,1,,stream_valid,packet valid
+input,1,,stream_valid,valid indicator
 input,6,[5:0],stream_meta,
 input,384,[383:0],stream_payload,
 ```
